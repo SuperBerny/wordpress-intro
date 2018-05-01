@@ -19,6 +19,10 @@ add_action('wp_enqueue_scripts', 'awesome_script_enqueue');
 //it's best to wrap this in a function
 function awesome_theme_support() {
   add_theme_support('menus');
+
+                                //second parameter is the menu description
+  register_nav_menu('primary','Primary Header Navigation');
+  register_nav_menu('secondary', 'Footer Naviagtion');
 }
 
 add_action('after_setup_theme', 'awesome_theme_support');
