@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', 'awesome_script_enqueue');
 //hook to activate theme support
 // add_theme_support('menus'); //this isn't the best way to do this
 //it's best to wrap this in a function
-function awesome_theme_support() {
+function awesome_theme_setup() {
   add_theme_support('menus');
 
                                 //second parameter is the menu description
@@ -25,4 +25,19 @@ function awesome_theme_support() {
   register_nav_menu('secondary', 'Footer Naviagtion');
 }
 
-add_action('after_setup_theme', 'awesome_theme_support');
+add_action('init', 'awesome_theme_setup');
+
+//Allow background image uploads on main page
+//look at header.php header image to see how it's added to the page with custom height and width added by wordpress from the backend
+add_theme_support('custom-background');
+
+// Allow header image upload in header
+add_theme_support('custom-header');
+
+// post thumbnail support
+add_theme_support('post-thumbnails');
+
+//have to add more than just 'post-formats' to add_theme_support();
+// reference https://codex.wordpress.org/Post_Formats
+//post-formats is followed by an array to add each of the 9 types of post-formats
+add_theme_support('post-formats', array('aside','image','video'));
